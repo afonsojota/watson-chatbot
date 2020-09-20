@@ -1,10 +1,10 @@
-package com.mulheres.ada;
+package com.afonso.bot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AdaApplicationTests {
+class BotWatsonApplicationTests {
 
 	@Test
 	void contextLoads() {

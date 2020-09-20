@@ -1,13 +1,11 @@
-package com.mulheres.ada.controller;
+package com.afonso.bot.controller;
 
 import com.ibm.watson.assistant.v2.model.*;
-import com.mulheres.ada.dto.InputMessageDTO;
-import com.mulheres.ada.dto.ResponseDTO;
-import com.mulheres.ada.service.WatsonService;
+import com.afonso.bot.dto.InputMessageDTO;
+import com.afonso.bot.dto.ResponseDTO;
+import com.afonso.bot.service.WatsonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 
@@ -22,7 +20,7 @@ public class ChatController {
         return watsonService.getSession();
     }
 
-    @GetMapping("/message")
+    @PostMapping("/message")
     public ResponseDTO botAssistant(@PathParam("session") String session, @RequestBody InputMessageDTO inputMessage){
         return watsonService.getMessage(session, inputMessage);
     }

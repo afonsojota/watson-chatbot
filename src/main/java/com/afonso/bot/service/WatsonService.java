@@ -1,11 +1,11 @@
-package com.mulheres.ada.service;
+package com.afonso.bot.service;
 
+import com.afonso.bot.dto.InputMessageDTO;
+import com.afonso.bot.dto.ResponseDTO;
 import com.ibm.cloud.sdk.core.security.IamAuthenticator;
 import com.ibm.cloud.sdk.core.service.exception.NotFoundException;
 import com.ibm.watson.assistant.v2.Assistant;
 import com.ibm.watson.assistant.v2.model.*;
-import com.mulheres.ada.dto.InputMessageDTO;
-import com.mulheres.ada.dto.ResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,16 +16,16 @@ public class WatsonService {
     @Autowired
     private ResponseDTO responseDTO;
 
-    @Value("${ada.watson.assistantId}")
+    @Value("${bot.watson.assistantId}")
     private String assistantId;
 
-    @Value("${ada.watson.apiKey}")
+    @Value("${bot.watson.apiKey}")
     private String apiKey;
 
-    @Value("${ada.watson.versionDate}")
+    @Value("${bot.watson.versionDate}")
     private String versionDate;
 
-    @Value("${ada.watson.url}")
+    @Value("${bot.watson.url}")
     private String watsonUrl;
 
     public SessionResponse getSession(){
@@ -60,14 +60,15 @@ public class WatsonService {
             output = assistant.message(options).execute().getResult().getOutput();
         }
 
-        String code = output.getIntents().size() > 0 ? "#" + output.getIntents().get(0).intent() : "#none";
+        String intent = output.getIntents().size() > 0 ? "#" + output.getIntents().get(0).intent() : "#none";
         String message = output.getGeneric().get(0).text();
 
         message = message != null ? message : "Desculpe, não entendi.";
 
+        responseDTO.setEntities(responseDTO.parseEntity(output.getEntities()));
         responseDTO.setSession(session);
         responseDTO.setMessage(message);
-        responseDTO.setCode(code);
+        responseDTO.setIntent(intent);
 
         System.out.println(output);
 

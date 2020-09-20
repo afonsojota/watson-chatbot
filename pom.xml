@@ -8,10 +8,10 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.mulheres</groupId>
-	<artifactId>adaChatbot</artifactId>
+	<groupId>com.afonso</groupId>
+	<artifactId>anakinBot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ada</name>
+	<name>bot</name>
 	<description>Chatbot project for Spring Boot</description>
 
 	<properties>

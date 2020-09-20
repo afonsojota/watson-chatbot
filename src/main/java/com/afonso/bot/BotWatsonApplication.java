@@ -1,14 +1,13 @@
-package com.mulheres.ada;
+package com.afonso.bot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class AdaApplication {
+public class BotWatsonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AdaApplication.class, args);
+		SpringApplication.run(BotWatsonApplication.class, args);
 	}
 
 }

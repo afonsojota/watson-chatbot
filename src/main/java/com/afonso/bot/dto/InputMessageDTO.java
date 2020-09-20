@@ -1,4 +1,4 @@
-package com.mulheres.ada.dto;
+package com.afonso.bot.dto;
 
 import org.springframework.stereotype.Component;
 
